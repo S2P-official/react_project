@@ -19,12 +19,13 @@ const ProductsPage: React.FC = () => {
     <div className="bg-gray-100 min-h-screen">
       
       <div className="pt-24 pb-10 px-4">
-        <h1 className="text-2xl font-semibold text-center mb-6">Top Deals on Earbuds</h1>
+        <h1 className="text-xs font-semibold text-center mb-4 text-gray-500 ">Top Deals on Earbuds</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {products.map((product, index) => (
             <ProductCard key={index} {...product} />
           ))}
         </div>
+        {/* text-xs text-gray-500 mb-4 */}
       </div>
     </div>
   );

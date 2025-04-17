@@ -14,8 +14,8 @@ const Navbar: React.FC = () => {
 
           {/* Left - Logo */}
           <div className="flex items-center flex-shrink-0">
-            <Link href="/" className="text-2xl font-bold text-blue-600">
-              MyLogo
+            <Link href="/" className="text-2xl font-bold text-blue-600 font-serif ">
+              FCT
             </Link>
           </div>
 
@@ -32,11 +32,11 @@ const Navbar: React.FC = () => {
           <div className="hidden md:flex items-center space-x-6">
             <Link href="/" className="text-gray-700 hover:text-blue-600">Home</Link>
             <Link href="/services" className="text-gray-700 hover:text-blue-600">Services</Link>
-
-            <div className="relative cursor-pointer">
+            <Link href="/src/app/Components/Dashboard.tsx" className="text-gray-700 hover:text-blue-600">DashBoard</Link>
+         <div className="relative cursor-pointer">
               <ShoppingCart className="w-5 h-5 text-gray-700 hover:text-blue-600" />
               <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1">
-                2
+                10
               </span>
             </div>
 
@@ -46,9 +46,9 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* Mobile Menu Toggle */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center text-gray-500 ">
             <button onClick={() => setIsOpen(!isOpen)} aria-label="Toggle Menu">
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
             </button>
           </div>
         </div>
@@ -60,7 +60,7 @@ const Navbar: React.FC = () => {
           <input
             type="text"
             placeholder="Search..."
-            className="w-full px-4 py-2 border border-gray-300 rounded-[10px] text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 text-gray-500 border border-gray-500 rounded-[15px] text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <Link href="/" className="block text-gray-700">Home</Link>
           <Link href="/services" className="block text-gray-700">Services</Link>

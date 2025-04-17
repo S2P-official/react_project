@@ -14,7 +14,7 @@ export default function ProductCard() {
           className="rounded"
         />
       </div>
-      <h3 className="text-base font-semibold mb-2">
+      <h3 className="text-xs text-gray-500 mb-4">
         Fixderma Shadow Sunscreen SPF 50+ PA+++ Gel Broad Spectrum Sunscreen F...
       </h3>
       <div className="mb-2">

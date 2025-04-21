@@ -7,6 +7,7 @@ import ProductCard from './ProductCard';
 
 
 const products = Array.from({ length: 20 }, (_, index) => ({
+  
   image: `/products/sample${(index % 5) + 1}.jpg`,
   name: `Truke Crystal Bass Earbuds Model ${index + 1}`,
   price: 899,
@@ -17,6 +18,7 @@ const products = Array.from({ length: 20 }, (_, index) => ({
 const ProductsPage: React.FC = () => {
   return (
     <div className="bg-gray-100 min-h-screen">
+      
       
       <div className="pt-24 pb-10 px-4">
         <h1 className="text-xs font-semibold text-center mb-4 text-gray-500 ">Top Deals on Earbuds</h1>

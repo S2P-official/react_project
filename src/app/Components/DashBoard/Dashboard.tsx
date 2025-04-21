@@ -11,12 +11,16 @@ const Dashboard: React.FC = () => {
 
   // List of cards and where they should navigate
   const cards = [
-    { title: "Add Products", path: "/dashboard/add-product" },
+    { title: "Add Products", path: "/dashboard/addproduct" },
     { title: "Stock : 00", path: "/dashboard/stock" },
-    { title: "Open Orders", path: "/dashboard/open-orders" },
-    { title: "Delivered List", path: "/dashboard/delivered" },
-    { title: "Add Shop", path: "/dashboard/add-shop" },
-    { title: "Shop List", path: "/dashboard/shop-list" },
+    { title: "Open Orders", path: "/dashboard/openorders" },
+    
+    { title: "Packed Items", path: "/dashboard/deliveredlist" },
+    { title: "Shipped Items", path: "/dashboard/deliveredlist" },
+    { title: "Out For Delivery List", path: "/dashboard/deliveredlist" },
+    { title: "Delivered List", path: "/dashboard/deliveredlist" },
+    { title: "Add Shop", path: "/dashboard/addshop" },
+    { title: "Shop List", path: "/dashboard/shoplist" },
   ];
 
   return (
@@ -26,7 +30,7 @@ const Dashboard: React.FC = () => {
         <Header />
         <main className="p-6 bg-gray-100 flex-1 overflow-y-auto">
           <h2 className="text-2xl font-bold mb-6">Overview</h2>
-
+         {/* <button onClick={() => router.push(`/dashboard/login`)}>Login</button> */}
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {cards.map((card, index) => (
               <div

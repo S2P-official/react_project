@@ -4,7 +4,11 @@ import { useState } from 'react';
 import { ShoppingCart, Menu, X } from 'lucide-react';
 import Link from 'next/link';
 
+
+
+
 const Navbar: React.FC = () => {
+
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
@@ -32,7 +36,8 @@ const Navbar: React.FC = () => {
           <div className="hidden md:flex items-center space-x-6">
             <Link href="/" className="text-gray-700 hover:text-blue-600">Home</Link>
             <Link href="/services" className="text-gray-700 hover:text-blue-600">Services</Link>
-            <Link href="/src/app/Components/Dashboard.tsx" className="text-gray-700 hover:text-blue-600">DashBoard</Link>
+            
+            <Link href="/dashboard" className="text-gray-700 hover:text-blue-600">DashBoard</Link>
          <div className="relative cursor-pointer">
               <ShoppingCart className="w-5 h-5 text-gray-700 hover:text-blue-600" />
               <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1">
@@ -64,6 +69,7 @@ const Navbar: React.FC = () => {
           />
           <Link href="/" className="block text-gray-700">Home</Link>
           <Link href="/services" className="block text-gray-700">Services</Link>
+          <Link href="/dashboard" className="block text-gray-700">DashBoard</Link>
           <div className="flex items-center justify-between">
             <ShoppingCart className="w-5 h-5 text-gray-700" />
             <button className="bg-blue-600 text-white px-4 py-1 rounded-full text-sm hover:bg-blue-700">

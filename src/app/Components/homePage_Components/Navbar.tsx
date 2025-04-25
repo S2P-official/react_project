@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { ShoppingCart, Menu, X } from 'lucide-react';
 import Link from 'next/link';
+import router from 'next/router';
 
 
 
@@ -72,7 +73,7 @@ const Navbar: React.FC = () => {
           <Link href="/dashboard" className="block text-gray-700">DashBoard</Link>
           <div className="flex items-center justify-between">
             <ShoppingCart className="w-5 h-5 text-gray-700" />
-            <button className="bg-blue-600 text-white px-4 py-1 rounded-full text-sm hover:bg-blue-700">
+            <button className="bg-blue-600 text-white px-4 py-1 rounded-full text-sm hover:bg-blue-700" onClick={() => router.push('/homepages/login')}>
               Login
             </button>
           </div>

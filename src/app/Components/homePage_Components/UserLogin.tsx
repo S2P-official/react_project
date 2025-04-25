@@ -49,10 +49,10 @@ export default function LoginPage() {
           </button>
         </form>
         <div className="mt-4 text-sm text-center">
-          <Link href="/forgot-password" className="text-blue-600 hover:underline">Forgot Password?</Link>
+          <Link href="/homepages/forgotpassword" className="text-blue-600 hover:underline">Forgot Password?</Link>
           <br />
           <span className="text-gray-600">Don’t have an account?</span>{' '}
-          <Link href="/register" className="text-blue-600 hover:underline">Register</Link>
+          <Link href="/homepages/register" className="text-blue-600 hover:underline">Register</Link>
         </div>
       </div>
     </div>

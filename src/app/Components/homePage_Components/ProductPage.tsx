@@ -17,8 +17,9 @@ interface Product {
 const ProductsPage: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [showSidebar, setShowSidebar] = useState<boolean>(true);
 
-  // Fetching product data inside useEffect (this ensures it's only on the client)
   useEffect(() => {
     const fetchProductData = async () => {
       try {
@@ -35,18 +36,81 @@ const ProductsPage: React.FC = () => {
     fetchProductData();
   }, []);
 
-  // Show loading state before fetching
+  const categories = Array.from(new Set(products.map((p) => p.category)));
+
+  const filteredProducts = selectedCategory
+    ? products.filter((p) => p.category === selectedCategory)
+    : products;
+
   if (loading) return <div className="text-center mt-10">Loading products...</div>;
 
   return (
-    <div className="bg-gray-100 min-h-screen py-24 px-4">
-      <h1 className="text-lg font-semibold text-center mb-6 text-gray-700">
-        Top Deals on Products
-      </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
+    <div className="bg-gray-100 h-screen overflow-hidden">
+      {/* Toggle Button for Mobile */}
+      <div className="lg:hidden fixed top-20 right-4 z-50">
+        <button
+          onClick={() => setShowSidebar((prev) => !prev)}
+          className="px-4 py-2 bg-blue-600 text-white rounded-xl text-sm shadow-md"
+        >
+          {showSidebar ? 'Hide Filters' : 'Show Filters'}
+        </button>
+      </div>
+
+      <div className="flex h-full pt-24 px-4 gap-6 overflow-hidden">
+        {/* Sidebar */}
+        {showSidebar && (
+          <aside
+            className="hidden lg:block w-64 p-4 rounded-xl shadow-md sticky top-24 h-[calc(100vh-6rem)] overflow-auto"
+            style={{
+              background:
+                'linear-gradient(109deg,rgba(243, 243, 243, 0.92),rgba(255, 255, 254, 0.66),rgba(250, 224, 237, 0.91)',
+            }}
+          >
+            <h2 className="text-md text-black font-semibold mb-5">Filter by Category</h2>
+            <ul className="space-y-2">
+              <li>
+                <button
+                  onClick={() => setSelectedCategory(null)}
+                  className={`w-full text-left px-3 py-2 rounded-r rounded-l text-black ${
+                    selectedCategory === null ? 'bg-blue-200 text-black' : 'hover:bg-gray-100'
+                  }`}
+                >
+                  All Categories
+                </button>
+              </li>
+              {categories.map((category) => (
+                <li key={category}>
+                  <button
+                    onClick={() => setSelectedCategory(category)}
+                    className={`w-full text-left px-3 py-2 rounded-xl text-black ${
+                      selectedCategory === category
+                        ? 'bg-blue-600 text-white'
+                        : 'hover:bg-gray-400'
+                    }`}
+                  >
+                    {category}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </aside>
+        )}
+
+        {/* Products Scrollable Area */}
+        <main className="flex-1 overflow-y-auto h-[calc(100vh-6rem)] pr-1">
+          <h1 className="text-lg font-semibold text-center mb-6 text-gray-700">
+            Top Deals on Products
+          </h1>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {filteredProducts.length > 0 ? (
+              filteredProducts.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))
+            ) : (
+              <p className="col-span-full text-center text-gray-500">No products found.</p>
+            )}
+          </div>
+        </main>
       </div>
     </div>
   );

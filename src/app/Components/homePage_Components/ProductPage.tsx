@@ -1,33 +1,52 @@
-// app/products/page.tsx
-
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ProductCard from './ProductCard';
 
-
-const products = Array.from({ length: 20 }, (_, index) => ({
-  
-  image: `/products/sample${(index % 5) + 1}.jpg`,
-  name: `Truke Crystal Bass Earbuds Model ${index + 1}`,
-  price: 899,
-  originalPrice: 2999,
-  rating: 4.5 + (index % 5) * 0.1,
-}));
+interface Product {
+  id: number;
+  name: string;
+  description: string;
+  imageUrl: string;
+  price: number;
+  originalPrice: number;
+  category: string;
+  isSponsored: boolean;
+}
 
 const ProductsPage: React.FC = () => {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetching product data inside useEffect (this ensures it's only on the client)
+  useEffect(() => {
+    const fetchProductData = async () => {
+      try {
+        const res = await fetch('http://localhost:8081/getAllProducts');
+        const data = await res.json();
+        setProducts(data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching product data:', error);
+        setLoading(false);
+      }
+    };
+
+    fetchProductData();
+  }, []);
+
+  // Show loading state before fetching
+  if (loading) return <div className="text-center mt-10">Loading products...</div>;
+
   return (
-    <div className="bg-gray-100 min-h-screen">
-      
-      
-      <div className="pt-24 pb-10 px-4">
-        <h1 className="text-xs font-semibold text-center mb-4 text-gray-500 ">Top Deals on Earbuds</h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {products.map((product, index) => (
-            <ProductCard key={index} {...product} />
-          ))}
-        </div>
-        {/* text-xs text-gray-500 mb-4 */}
+    <div className="bg-gray-100 min-h-screen py-24 px-4">
+      <h1 className="text-lg font-semibold text-center mb-6 text-gray-700">
+        Top Deals on Products
+      </h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
       </div>
     </div>
   );

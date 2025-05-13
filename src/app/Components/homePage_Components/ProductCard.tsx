@@ -1,25 +1,43 @@
-import Image from "next/image";
+import React from 'react';
+import Image from 'next/image';
 
-export default function ProductCard() {
+interface ProductCardProps {
+  product: {
+    id: number;
+    name: string;
+    description: string;
+    imageUrl: string;
+    price: number;
+    originalPrice: number;
+    category: string;
+    isSponsored: boolean;
+  };
+}
+
+const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div className="max-w-sm rounded-2xl shadow-md p-4 border border-gray-200">
-      <p className="text-sm font-semibold text-gray-700 mb-1">Featured in Beauty</p>
-      <p className="text-xs text-gray-500 mb-4">Sponsored</p>
+      <p className="text-sm font-semibold text-gray-700 mb-1">{product.category}</p>
+      {product.isSponsored && (
+        <p className="text-xs text-gray-500 mb-4">Sponsored</p>
+      )}
       <div className="flex justify-center mb-4">
         <Image
-          src="/image.png" // Make sure to save the image in the public folder
-          alt="Fixderma Shadow Sunscreen"
+          src={"/image.png"} // Dynamic image URL
+          alt={"product.name"}
           width={150}
           height={150}
           className="rounded"
         />
       </div>
-      <h3 className="text-xs text-gray-500 mb-4">
-        Fixderma Shadow Sunscreen SPF 50+ PA+++ Gel Broad Spectrum Sunscreen F...
-      </h3>
+      <h3 className="text-xs text-gray-500 mb-4">{product.description}</h3>
       <div className="mb-2">
-        <span className="text-lg font-bold text-green-600">₹285.00</span>{" "}
-        <span className="text-sm line-through text-gray-500">₹350.00</span>
+        <span className="text-lg font-bold text-green-600">
+          ₹{product.price}
+        </span>
+        <span className="text-sm line-through text-gray-500">
+          ₹{product.originalPrice}
+        </span>
       </div>
       <a
         href="#"
@@ -29,4 +47,6 @@ export default function ProductCard() {
       </a>
     </div>
   );
-}
+};
+
+export default ProductCard;

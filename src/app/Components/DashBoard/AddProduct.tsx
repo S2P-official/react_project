@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 
 const AddToyProduct = () => {
@@ -19,19 +20,50 @@ const AddToyProduct = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Submitting toy product:", formData);
-    // TODO: Add API integration here
+
+    try {
+      const response = await fetch("http://localhost:8081/addProduct", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          price: parseFloat(formData.price),
+          quantity: parseInt(formData.quantity),
+        }),
+      });
+
+      if (response.ok) {
+        alert("Toy product added successfully!");
+        setFormData({
+          name: "",
+          description: "",
+          category: "",
+          price: "",
+          quantity: "",
+          imageUrl: "",
+          ageGroup: "",
+        });
+      } else {
+        alert("Failed to add toy product.");
+      }
+    } catch (error) {
+      console.error("Error submitting toy product:", error);
+      alert("An error occurred while submitting the form.");
+    }
   };
 
   return (
     <div className="min-h-screen bg-gray-50 py-10 px-4 sm:px-10">
       <div className="max-w-2xl mx-auto bg-white shadow-md rounded-2xl p-6">
         <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">Add Toy Product</h2>
-
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Toy Name */}
+
+
+           {/* Toy Name */}
           <div>
             <label className="block text-sm font-medium text-gray-700">Toy Name</label>
             <input
@@ -137,6 +169,9 @@ const AddToyProduct = () => {
           >
             Add Toy Product
           </button>
+          {/* All your input fields remain unchanged here */}
+          {/* Paste your original input and label JSX here */}
+          {/* ... */}
         </form>
       </div>
     </div>
@@ -144,3 +179,7 @@ const AddToyProduct = () => {
 };
 
 export default AddToyProduct;
+
+
+
+

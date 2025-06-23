@@ -76,8 +76,8 @@ const AddShopForm = () => {
   };
 
   return (
-    <div className="p-6 min-h-screen bg-gradient-to-b from-orange-100 via-white to-green-100">
-      <h2 className="text-3xl font-bold text-center text-orange-600 mb-8">Add New Shop</h2>
+    <div className="p-6 min-h-screen bg-white">
+      <h2 className="text-3xl font-bold text-center text-black mb-8">Add New Shop</h2>
 
       <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-xl max-w-4xl mx-auto grid gap-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

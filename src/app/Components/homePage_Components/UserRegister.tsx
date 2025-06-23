@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Mail, Lock, User, Phone } from 'lucide-react';
+import Navbar from './Navbar';
 
 export default function RegisterPage() {
   const [name, setName] = useState('');
@@ -26,8 +27,11 @@ export default function RegisterPage() {
   };
 
   return (
+    <>
+      <Navbar />
+    
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md">
+      <div className="bg-white mx-8 p-8 rounded-2xl shadow-xl w-full max-w-md">
         <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">Register</h2>
         <form onSubmit={handleRegister} className="space-y-5">
 
@@ -111,5 +115,6 @@ export default function RegisterPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

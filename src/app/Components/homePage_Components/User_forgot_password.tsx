@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { Mail } from 'lucide-react';
+import Navbar from './Navbar';
 
 export default function User_forgot_password() {
   const [email, setEmail] = useState('');
@@ -12,8 +13,11 @@ export default function User_forgot_password() {
   };
 
   return (
+    <>
+    
+      <Navbar/>
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md">
+      <div className="bg-white mx-8 p-8 rounded-2xl shadow-xl w-full max-w-md">
         <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">Forgot Password</h2>
         <form onSubmit={handleReset} className="space-y-5">
           <div className="flex items-center border rounded-xl px-3 py-2">
@@ -33,5 +37,6 @@ export default function User_forgot_password() {
         </form>
       </div>
     </div>
+        </>
   );
 }

@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { Mail } from 'lucide-react';
 import Link from 'next/link';
 
-export default function set_user_forgot_password() {
+export default function SetUserForgotPassword() {
   const [email, setEmail] = useState('');
   const router = useRouter();
 

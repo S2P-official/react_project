@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Mail } from 'lucide-react';
 import Navbar from './Navbar';
 
-export default function User_forgot_password() {
+export default function UserForgotPassword() {
   const [email, setEmail] = useState('');
 
   const handleReset = (e: React.FormEvent) => {

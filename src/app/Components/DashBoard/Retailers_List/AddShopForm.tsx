@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { Store, User, Mail, Phone, PhoneCall, Landmark, MapPin, Globe, FileText, Image as ImageIcon, Home } from "lucide-react";
+import Image from "next/image";
 
 type ShopData = {
   ownerName: string;
@@ -261,7 +262,9 @@ const AddShopForm = () => {
             className="border p-3 rounded-lg w-full"
           />
           {previewImage && (
-            <img src={previewImage} alt="Shop Preview" className="mt-4 w-40 h-40 object-cover rounded-lg" />
+<Image src={previewImage} alt="Shop Preview" className="mt-4 w-40 h-40 object-cover rounded-lg"></Image>
+
+           
           )}
         </div>
 

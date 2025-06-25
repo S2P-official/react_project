@@ -51,6 +51,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           alt={product.name}
           layout="fill"
           objectFit="cover"
+       
         />
       </div>
 

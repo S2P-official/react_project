@@ -1,13 +1,15 @@
 // pages/dashboard/index.tsx
 'use client';
 
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import Sidebar from "./Sidebar";
+import { Home, Settings, User, Menu, X } from "lucide-react";
+import Link from "next/link";
 import Header from "./Header";
 
 const Dashboard: React.FC = () => {
   const router = useRouter();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const cards = [
     { title: "Add Products", path: "/dashboard/addproduct" },
@@ -23,9 +25,34 @@ const Dashboard: React.FC = () => {
 
   return (
     <div className="flex flex-col md:flex-row h-screen overflow-hidden">
-      {/* Sidebar: will adjust width based on screen size */}
-      <div  className="w-full bg-gray-900 text-white p-0 flex  justify-between items-center">
-        <Sidebar />
+      {/* Mobile Top Bar with Toggle Button */}
+      <div className="md:hidden bg-gray-900 text-white flex items-center justify-between p-4">
+        <h2 className="text-xl font-bold">Dashboard</h2>
+        <button onClick={() => setSidebarOpen(!sidebarOpen)}>
+          {sidebarOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {/* Sidebar */}
+      <div
+        className={`bg-gray-900 text-white p-4 space-y-4 md:block ${
+          sidebarOpen ? "block fixed inset-y-0 left-0 w-56 z-50" : "hidden"
+        } md:relative md:w-64`}
+      >
+        <h2 className="text-2xl font-bold mb-6 hidden md:block">Dashboard</h2>
+        <ul className="space-y-2">
+          <li>
+            <Link href="/" className="flex items-center gap-2 hover:text-gray-300">
+              <Home size={20} /> Home
+            </Link>
+          </li>
+          <li className="flex items-center gap-2 hover:text-gray-300 cursor-pointer">
+            <User size={20} /> Users
+          </li>
+          <li className="flex items-center gap-2 hover:text-gray-300 cursor-pointer">
+            <Settings size={20} /> Settings
+          </li>
+        </ul>
       </div>
 
       {/* Main Content */}

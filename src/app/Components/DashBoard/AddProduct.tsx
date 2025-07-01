@@ -24,7 +24,7 @@ const AddToyProduct = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:8081/addProduct", {
+      const response = await fetch("http://143.244.142.60:8080/addProduct", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

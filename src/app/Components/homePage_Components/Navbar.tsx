@@ -39,7 +39,7 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* Center - Search */}
-          <div className="hidden md:flex flex-1 justify-center mx-4">
+          {/* <div className="hidden md:flex flex-1 justify-center mx-4">
             <input
               type="text"
               placeholder="Search products..."
@@ -47,7 +47,7 @@ const Navbar: React.FC = () => {
               onChange={handleSearchChange}
               className="w-full max-w-md px-4 py-2 border border-gray-300 rounded-[10px] text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
-          </div>
+          </div> */}
 
           {/* Right - Menu Items */}
           <div className="hidden md:flex items-center space-x-6">
@@ -115,18 +115,22 @@ const Navbar: React.FC = () => {
           <Link href="/dashboard" className="block text-gray-700">
             DashBoard
           </Link>
-          <Link href="/dashboard/login" className="block text-gray-700">
+          {/* <Link href="/dashboard/login" className="block text-gray-700">
             Login
-          </Link>
+          </Link> */}
 
           <div className="flex items-center justify-between">
             <ShoppingCart className="w-5 h-5 text-gray-700" />
-            <button
+
+             <Link href="/dashboard/login"  className="bg-blue-600 text-white px-4 py-1 rounded-full text-sm hover:bg-blue-700">
+            Login
+          </Link>
+            {/* <button
               className="bg-blue-600 text-white px-4 py-1 rounded-full text-sm hover:bg-blue-700"
-              onClick={() => router.push("/login")}
+              onClick={() => router.push("./dashboard/login")}
             >
               Login
-            </button>
+            </button> */}
           </div>
         </div>
       )}

@@ -23,7 +23,7 @@ const ProductsPage: React.FC = () => {
   useEffect(() => {
     const fetchProductData = async () => {
       try {
-        const res = await fetch('http://localhost:8080/getAllProducts');
+        const res = await fetch('http://143.244.142.60:8080/getAllProducts');
         const data = await res.json();
         setProducts(data);
         setLoading(false);
@@ -48,7 +48,7 @@ const categories = Array.from(
   if (loading) return <div className="text-center mt-18">Loading products...</div>;
 
   return (
-    <div className="bg-gray-100  overflow-hidden mt-16">
+    <div className="bg-gray-100  overflow-hidden ">
       {/* Toggle Button for Mobile */}
       <div className="lg:hidden fixed top-20 right-4 z-50">
         <button
@@ -59,7 +59,7 @@ const categories = Array.from(
         </button>
       </div>
 
-     <div className="flex h-full pt-5 px-4 gap-6 overflow-hidden">
+     <div className="flex h-full pt-5 px-4 gap-6 overflow-hidden mt-15">
   {/* Sidebar */}
   {showSidebar && (
     <aside

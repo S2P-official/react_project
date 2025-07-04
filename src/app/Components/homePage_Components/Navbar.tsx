@@ -9,12 +9,12 @@ import Image from 'next/image'
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [searchQuery, setSearchQuery] = useState<string>(""); // State for the search query
+  // const [searchQuery, setSearchQuery] = useState<string>(""); // State for the search query
 
   // Handle search change
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.target.value);
-  };
+  // const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setSearchQuery(e.target.value);
+  // };
 
   return (
     <nav className="shadow-md fixed top-0 left-0 w-full z-50">
@@ -55,7 +55,7 @@ const Navbar: React.FC = () => {
               Home
             </Link>
             <Link
-              href="/services"
+              href="/homepages/services"
               className="text-gray-700 hover:text-blue-600"
             >
               Services
@@ -85,13 +85,13 @@ const Navbar: React.FC = () => {
 
           {/* Mobile Menu Toggle */}
           <div className="md:hidden flex items-center text-gray-500  ">
-            <input
+            {/* <input
               type="text"
               placeholder="Search products..."
               value={searchQuery}
               onChange={handleSearchChange}
               className="w-full px-4 mx-3 py-1 text-gray-500 border border-gray-500 rounded-[8px] text-sm focus:outline-none focus:ring-2 focus:ring-blue-200"
-            />
+            /> */}
             <button onClick={() => setIsOpen(!isOpen)} aria-label="Toggle Menu">
               {isOpen ? (
                 <X className="w-8 h-8" />
@@ -109,7 +109,7 @@ const Navbar: React.FC = () => {
           <Link href="/" className="block text-gray-700">
             Home
           </Link>
-          <Link href="/services" className="block text-gray-700">
+          <Link href="/homepages/services" className="block text-gray-700">
             Services
           </Link>
           <Link href="/dashboard" className="block text-gray-700">

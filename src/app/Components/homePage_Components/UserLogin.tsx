@@ -27,7 +27,7 @@ export default function UserLogin() {
             <input
               type="email"
               placeholder="Email"
-              className="w-full outline-none"
+              className="w-full outline-none text-black dark:text-white"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -38,7 +38,7 @@ export default function UserLogin() {
             <input
               type="password"
               placeholder="Password"
-              className="w-full outline-none"
+              className="w-full outline-none text-black dark:text-white"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required

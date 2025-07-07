@@ -41,7 +41,7 @@ export default function RegisterPage() {
             <input
               type="text"
               placeholder="Full Name"
-              className="w-full outline-none"
+              className="w-full outline-none text-black dark:text-white"
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
@@ -54,7 +54,7 @@ export default function RegisterPage() {
             <input
               type="tel"
               placeholder="Phone Number"
-              className="w-full outline-none"
+              className="w-full outline-none text-black dark:text-white"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               required
@@ -67,7 +67,7 @@ export default function RegisterPage() {
             <input
               type="email"
               placeholder="Email"
-              className="w-full outline-none"
+              className="w-full outline-none text-black dark:text-white"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -80,7 +80,7 @@ export default function RegisterPage() {
             <input
               type="password"
               placeholder="Password"
-              className="w-full outline-none"
+              className="w-full outline-none text-black dark:text-white"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -93,7 +93,7 @@ export default function RegisterPage() {
             <input
               type="password"
               placeholder="Confirm Password"
-              className="w-full outline-none"
+              className="w-full outline-none text-black dark:text-white"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required

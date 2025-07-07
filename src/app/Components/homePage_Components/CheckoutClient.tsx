@@ -3,23 +3,39 @@
 import { useSearchParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function CheckoutClient() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [pincode, setPincode] = useState('');
+  const [imageUrls, setImageUrls] = useState<string[]>([]);
   const [selectedImage, setSelectedImage] = useState(0);
 
   const name = searchParams?.get('name') || 'Unnamed Product';
   const description = searchParams?.get('description') || 'No description available.';
-  const imageUrl = searchParams?.get('imageUrl') || '/default.jpg';
   const price = searchParams?.get('price') || '0';
   const originalPrice = searchParams?.get('originalPrice') || '0';
   const rating = searchParams?.get('rating') || '4.6';
   const productId = searchParams?.get('id') || '';
+  const rawProductName = name;
+  const safeProductName = rawProductName.replace(/[^a-zA-Z0-9-_]/g, '_');
 
-  const images = [imageUrl, imageUrl, imageUrl];
+  useEffect(() => {
+    if (!safeProductName) return;
+
+    const fetchImages = async () => {
+      try {
+        const res = await fetch(`https://fictilecore.com/api/images/${safeProductName}`);
+        const data = await res.json();
+        setImageUrls(data);
+      } catch (error) {
+        console.error('Failed to fetch images:', error);
+      }
+    };
+
+    fetchImages();
+  }, [safeProductName]);
 
   const handleAddToCart = async () => {
     const token = localStorage.getItem('token');
@@ -51,34 +67,48 @@ export default function CheckoutClient() {
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
       <div className="bg-white shadow-2xl rounded-2xl p-4 sm:p-6 md:p-8 hover:shadow-[0_10px_30px_rgba(0,0,0,0.2)]">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Image section */}
+          {/* Image Section */}
           <div className="flex flex-col items-center">
             <div className="w-full max-w-xs sm:max-w-sm md:max-w-md aspect-square relative">
-              <Image
-                src={images[selectedImage]}
-                alt={name}
-                fill
-                className="object-cover rounded-xl shadow-xl hover:scale-105 transition"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
+              {imageUrls.length > 0 ? (
+                <Image
+                  src={`https://fictilecore.com${imageUrls[selectedImage]}`}
+                  alt={name}
+                  fill
+                  className="object-cover rounded-xl shadow-xl hover:scale-105 transition"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  unoptimized
+                />
+              ) : (
+                <p className="text-gray-400 text-center">Loading image...</p>
+              )}
             </div>
 
-            <div className="flex gap-3 mt-4 overflow-x-auto w-full">
-              {images.map((img, index) => (
-                <div
-                  key={index}
-                  onClick={() => setSelectedImage(index)}
-                  className={`min-w-[60px] h-[60px] border-2 rounded-lg cursor-pointer ${
-                    selectedImage === index ? 'border-blue-600' : 'border-gray-200'
-                  }`}
-                >
-                  <Image src={img} alt={`Thumb ${index}`} width={60} height={60} className="rounded-md object-cover" />
-                </div>
-              ))}
-            </div>
+            {imageUrls.length > 1 && (
+              <div className="flex gap-3 mt-4 overflow-x-auto w-full justify-center">
+                {imageUrls.map((img, index) => (
+                  <div
+                    key={index}
+                    onClick={() => setSelectedImage(index)}
+                    className={`min-w-[60px] h-[60px] border-2 rounded-lg cursor-pointer ${
+                      selectedImage === index ? 'border-blue-600' : 'border-gray-200'
+                    }`}
+                  >
+                    <Image
+                      src={`https://fictilecore.com${img}`}
+                      alt={`Thumb ${index}`}
+                      width={60}
+                      height={60}
+                      className="rounded-md object-cover"
+                      unoptimized
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
-          {/* Product details */}
+          {/* Product Details */}
           <div className="flex flex-col justify-between">
             <div>
               <h1 className="text-xl sm:text-2xl font-semibold text-gray-800">{name}</h1>

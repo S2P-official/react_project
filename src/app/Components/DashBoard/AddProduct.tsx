@@ -105,7 +105,7 @@ const AddToyProduct = () => {
               required
               value={formData.name}
               onChange={handleChange}
-              className="w-full mt-1 p-2 border border-gray-300 rounded-xl"
+              className="w-full mt-1 p-2 border border-gray-300 rounded-xl text-black dark:text-white"
             />
           </div>
 
@@ -119,7 +119,7 @@ const AddToyProduct = () => {
               rows={3}
               value={formData.description}
               onChange={handleChange}
-              className="w-full mt-1 p-2 border border-gray-300 rounded-xl"
+              className="w-full mt-1 p-2 border border-gray-300 rounded-xl "
             ></textarea>
           </div>
 
@@ -168,7 +168,7 @@ const AddToyProduct = () => {
                 required
                 value={formData.quantity}
                 onChange={handleChange}
-                className="w-full mt-1 p-2 border border-gray-300 rounded-xl"
+                className="w-full mt-1 p-2 border border-gray-300 rounded-xl text-black dark:text-white"
               />
             </div>
           </div>
@@ -183,7 +183,7 @@ const AddToyProduct = () => {
               required
               value={formData.ageGroup}
               onChange={handleChange}
-              className="w-full mt-1 p-2 border border-gray-300 rounded-xl"
+              className="w-full mt-1 p-2 border border-gray-300 rounded-xl text-black dark:text-white"
             >
               <option value="">Select Age Group</option>
               <option value="0-2">0–2 years</option>
@@ -195,7 +195,7 @@ const AddToyProduct = () => {
 
           {/* Image Upload */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block text-sm font-medium text-gray-700 text-black dark:text-white">
               Upload Images
             </label>
             <input
@@ -204,7 +204,7 @@ const AddToyProduct = () => {
               multiple
               accept="image/*"
               onChange={handleImageChange}
-              className="w-full mt-1 p-2 border border-gray-300 rounded-xl"
+              className="w-full mt-1 p-2 border border-gray-300 rounded-xl text-black dark:text-white"
             />
           </div>
 
@@ -216,7 +216,7 @@ const AddToyProduct = () => {
                   <img
                     src={src}
                     alt={`preview-${idx}`}
-                    className="w-full h-32 object-cover rounded-xl border shadow"
+                    className="w-full h-32 object-cover rounded-xl border shadow text-black dark:text-white"
                   />
                   <button
                     type="button"

@@ -23,10 +23,11 @@ const ProductsPage: React.FC = () => {
   useEffect(() => {
     const fetchProductData = async () => {
       try {
-        const res = await fetch('http://143.244.142.60:8080/getAllProducts');
+        const res = await fetch('http://143.244.142.60:8080/products');
         const data = await res.json();
         setProducts(data);
         setLoading(false);
+        console.log(data);
       } catch (error) {
         console.error('Error fetching product data:', error);
         setLoading(false);

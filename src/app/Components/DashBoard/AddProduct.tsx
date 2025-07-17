@@ -10,6 +10,29 @@ const AddToyProduct = () => {
     price: "",
     quantity: "",
     ageGroup: "",
+    facebook:"",
+    amazon:"",
+    meesho:"",
+    youtube:"",
+    mrp:"",
+    tax:"",
+    aboutItem1:"",
+    aboutItem2:"",
+    aboutItem3:"",
+    aboutItem4:"",
+    aboutItem5:"",
+    Brand:"",
+    ToyFigureType:"",
+    character:"",
+    ModelName:"",
+    ModelNumber:"",
+    Manufacturer:"",
+    Theme:"",
+    Colour:"",
+    Occasion:"",
+    Material:"",
+    AdditionalFeatures:"",
+    AreBatteriesRequired:"",
   });
 
   const [images, setImages] = useState<File[]>([]);
@@ -58,10 +81,10 @@ const AddToyProduct = () => {
 
     try {
       const data = new FormData();
-      data.append("AddInventory", JSON.stringify(formData)); // This matches your backend key
+      data.append("Inventory", JSON.stringify(formData)); // This matches your backend key
       images.forEach((file) => data.append("images", file));
 
-      const response = await fetch("http://143.244.142.60:8080/add", {
+      const response = await fetch("http://localhost:8080/add", {
         method: "POST",
         body: data,
       });
@@ -75,6 +98,29 @@ const AddToyProduct = () => {
           price: "",
           quantity: "",
           ageGroup: "",
+           facebook:"",
+    amazon:"",
+    meesho:"",
+    youtube:"",
+    mrp:"",
+    tax:"",
+    aboutItem1:"",
+    aboutItem2:"",
+    aboutItem3:"",
+    aboutItem4:"",
+    aboutItem5:"",
+    Brand:"",
+    ToyFigureType:"",
+    character:"",
+    ModelName:"",
+    ModelNumber:"",
+    Manufacturer:"",
+    Theme:"",
+    Colour:"",
+    Occasion:"",
+    Material:"",
+    AdditionalFeatures:"",
+    AreBatteriesRequired:"",
         });
         setImages([]);
         setPreviewImages([]);
@@ -138,8 +184,18 @@ const AddToyProduct = () => {
               <option value="">Select Category</option>
               <option value="Soft Toy">Soft Toy</option>
               <option value="Puzzle">Puzzle</option>
-              <option value="Educational">Educational</option>
+             
               <option value="Remote Controlled">Remote Controlled</option>
+              <option value="Action Figures">Action </option>
+              <option value="Dolls">Dolls</option>
+              <option value="Collectible ">Collectible </option>
+              <option value="DIY / Assembly">DIY / Assembly </option>
+              <option value="D Robot or Mecha ">D Robot or Mecha </option>
+              <option value="Educational / Role Play ">Educational / Role Play </option>
+              <option value="Animal ">Animal </option>
+              <option value="Vehicle-Attachable ">Vehicle-Attachable </option>
+              <option value="Customizable / Interchangeable ">Customizable / Interchangeable </option>
+
             </select>
           </div>
 
@@ -193,6 +249,309 @@ const AddToyProduct = () => {
             </select>
           </div>
 
+        <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Facebook Link
+            </label>
+            <input
+              type="text"
+              name="facebook"
+              required
+              value={formData.facebook}
+              onChange={handleChange}
+              className="w-full mt-1 p-2 border border-gray-300 rounded-xl text-black dark:text-white"
+            />
+          </div>
+
+          
+        <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Amazon Link
+            </label>
+            <input
+              type="text"
+              name="amazon"
+              required
+              value={formData.amazon}
+              onChange={handleChange}
+              className="w-full mt-1 p-2 border border-gray-300 rounded-xl text-black dark:text-white"
+            />
+          </div>
+
+          
+        <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Meeshoo Link
+            </label>
+            <input
+              type="text"
+              name="meesho"
+              required
+              value={formData.meesho}
+              onChange={handleChange}
+              className="w-full mt-1 p-2 border border-gray-300 rounded-xl text-black dark:text-white"
+            />
+          </div>
+
+
+          
+        <div>
+            <label className="block text-sm font-medium text-gray-700">
+              youtube Link
+            </label>
+            <input
+              type="text"
+              name="youtube"
+              required
+              value={formData.youtube}
+              onChange={handleChange}
+              className="w-full mt-1 p-2 border border-gray-300 rounded-xl text-black dark:text-white"
+            />
+          </div>
+
+
+                  <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Description 1
+            </label>
+            <input
+              type="text"
+              name="aboutItem1"
+              required
+              value={formData.aboutItem1}
+              onChange={handleChange}
+              className="w-full mt-1 p-2 border border-gray-300 rounded-xl text-black dark:text-white"
+            />
+          </div>
+
+                    <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Description 2
+            </label>
+            <input
+              type="text"
+              name="aboutItem2"
+              required
+              value={formData.aboutItem2}
+              onChange={handleChange}
+              className="w-full mt-1 p-2 border border-gray-300 rounded-xl text-black dark:text-white"
+            />
+          </div>
+                    <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Description 3
+            </label>
+            <input
+              type="text"
+              name="aboutItem3"
+              required
+              value={formData.aboutItem3}
+              onChange={handleChange}
+              className="w-full mt-1 p-2 border border-gray-300 rounded-xl text-black dark:text-white"
+            />
+          </div>
+
+                    <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Description 4
+            </label>
+            <input
+              type="text"
+              name="aboutItem4"
+              required
+              value={formData.aboutItem4}
+              onChange={handleChange}
+              className="w-full mt-1 p-2 border border-gray-300 rounded-xl text-black dark:text-white"
+            />
+          </div>
+
+                    <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Description 5
+            </label>
+            <input
+              type="text"
+              name="aboutItem5"
+              required
+              value={formData.aboutItem5}
+              onChange={handleChange}
+              className="w-full mt-1 p-2 border border-gray-300 rounded-xl text-black dark:text-white"
+            />
+          </div>
+
+                    <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Brand
+            </label>
+            <input
+              type="text"
+              name="Brand"
+              required
+              value={formData.Brand}
+              onChange={handleChange}
+              className="w-full mt-1 p-2 border border-gray-300 rounded-xl text-black dark:text-white"
+            />
+          </div>
+
+          
+                    <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Manufacturer
+            </label>
+            <input
+              type="text"
+              name="Manufacturer"
+              required
+              value={formData.Manufacturer}
+              onChange={handleChange}
+              className="w-full mt-1 p-2 border border-gray-300 rounded-xl text-black dark:text-white"
+            />
+          </div>
+
+          
+                    <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Theme
+            </label>
+            <input
+              type="text"
+              name="Theme"
+              required
+              value={formData.Theme}
+              onChange={handleChange}
+              className="w-full mt-1 p-2 border border-gray-300 rounded-xl text-black dark:text-white"
+            />
+          </div>
+          
+                    <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Model Name
+            </label>
+            <input
+              type="text"
+              name="ModelName"
+              required
+              value={formData.ModelName}
+              onChange={handleChange}
+              className="w-full mt-1 p-2 border border-gray-300 rounded-xl text-black dark:text-white"
+            />
+          </div>
+
+          
+                    <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Model Number
+            </label>
+            <input
+              type="number"
+              name="ModelNumber"
+              required
+              value={formData.ModelNumber}
+              onChange={handleChange}
+              className="w-full mt-1 p-2 border border-gray-300 rounded-xl text-black dark:text-white"
+            />
+          </div>
+
+          
+                    <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Colour
+            </label>
+            <input
+              type="text"
+              name="Colour"
+              required
+              value={formData.Colour}
+              onChange={handleChange}
+              className="w-full mt-1 p-2 border border-gray-300 rounded-xl text-black dark:text-white"
+            />
+          </div>
+
+          
+                    <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Occation
+            </label>
+            <input
+              type="text"
+              name="Occasion"
+              required
+              value={formData.Occasion}
+              onChange={handleChange}
+              className="w-full mt-1 p-2 border border-gray-300 rounded-xl text-black dark:text-white"
+            />
+          </div>
+
+          
+                    <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Material
+            </label>
+            <input
+              type="text"
+              name="Material"
+              required
+              value={formData.Material}
+              onChange={handleChange}
+              className="w-full mt-1 p-2 border border-gray-300 rounded-xl text-black dark:text-white"
+            />
+          </div>
+
+          
+                    <div>
+            <label className="block text-sm font-medium text-gray-700">
+              AdditionalFeatures
+            </label>
+            <input
+              type="text"
+              name="AdditionalFeatures"
+              required
+              value={formData.AdditionalFeatures}
+              onChange={handleChange}
+              className="w-full mt-1 p-2 border border-gray-300 rounded-xl text-black dark:text-white"
+            />
+          </div>
+
+          
+              <div>
+            <label className="block text-sm font-medium text-gray-700">
+              AreBatteriesRequired
+            </label>
+            <select
+              name="AreBatteriesRequired"
+              required
+              value={formData.AreBatteriesRequired}
+              onChange={handleChange}
+              className="w-full mt-1 p-2 border border-gray-300 rounded-xl"
+            >
+            <option value="select">Select</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+                   
+            </select>
+          </div>
+
+       
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           {/* Image Upload */}
           <div>
             <label className="block text-sm font-medium text-gray-700 text-black dark:text-white">
@@ -232,6 +591,8 @@ const AddToyProduct = () => {
           )}
 
           {/* Submit Button */}
+
+
           <button
             type="submit"
             className="w-full py-2 px-4 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition"

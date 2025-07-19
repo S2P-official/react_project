@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import ProductCard from './ProductCard';
 
-
 interface Product {
   id: number;
   name: string;
@@ -24,7 +23,7 @@ const ProductsPage: React.FC = () => {
   useEffect(() => {
     const fetchProductData = async () => {
       try {
-        const res = await fetch('http://localhost:8080/products');
+        const res = await fetch('https://www.fictilecore.com/products');
         const data = await res.json();
         setProducts(data);
         setLoading(false);
@@ -51,8 +50,6 @@ const categories = Array.from(
 
   return (
     <div className="bg-gray-100  overflow-hidden ">
-
-  
       {/* Toggle Button for Mobile */}
       <div className="lg:hidden fixed top-20 right-4 z-50">
         <button

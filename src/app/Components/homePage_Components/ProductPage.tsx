@@ -23,7 +23,7 @@ const ProductsPage: React.FC = () => {
   useEffect(() => {
     const fetchProductData = async () => {
       try {
-        const res = await fetch('http://143.244.142.60:8080/products');
+        const res = await fetch('https://www.fictilecore.com/products');
         const data = await res.json();
         setProducts(data);
         setLoading(false);
